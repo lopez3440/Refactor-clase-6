@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet'  href='salarios.css'>
+    <link rel= 'stylesheet' href= 'validaciones.css'>
+   
+</head>
+<body>
+    <header>
+        <h1>Calculador salario anual y mensual familiar!</h1>
+    </header>
+
+    <main>
+        <form id="cantidad-familiares"> 
+            <label>Ingrese cantidad de integrantes familiares que trabajen</label>
+            <input type="number" placeholder="Ingrese aqui" id="integrantes-trabajadores" name = "integrantes-trabajadores"/>
+            <button type="submit" id="ingresar-integrantes">Ingresar</button>
+
+        
+    </form>
+    
+    <div id ="errores"></div>
+    
+    
+    <form  id="calculador-salarios">
+        <div id ="integrantes"></div>
+
+        <button type="submit" id="calcular-salarios" class="oculto">Calcular</button>
+        <button type="reset"  id="resetear-inputs" class="oculto">Resetear</button>
+    </form>    
+        
+    <div id ="errores-salarios"></div>
+        
+
+        <div id="resultados" class="oculto">
+            <p>El mayor salario anual es: <strong id="mayor-salario"></strong> </p>
+            <p>El menor salario anual es: <strong id="menor-salario"></strong> </p>
+            <p>El salario anual promedio es: <strong id="salario-anual-promedio"></strong> </p>
+            <p>El salario mensual promedio es: <strong id="salario-mensual-promedio"></strong> </p>
+        </div>
+        
+
+
+
+    </main>
+    <script src="validaciones-salarios.js"></script>
+    <script src="pruebas-salarios.js"></script>
+    <script src="calcular-salario.js"></script>
+   
+</body>
+</html>
