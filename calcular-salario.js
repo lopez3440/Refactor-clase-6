@@ -7,7 +7,7 @@ Punto bonus: si hay inputs vacíos, ignorarlos en el cálculo (no contarlos como
 */
 
 
-document.querySelector("#cantidad-familiares").onclick = function (){
+document.querySelector("#cantidad-familiares").addEventListener('submit',  function (){
   const $cantidadIntegrantes = document.querySelector('#integrantes-trabajadores')
   const cantidadIntegrantes = Number($cantidadIntegrantes.value)
 
@@ -18,24 +18,24 @@ document.querySelector("#cantidad-familiares").onclick = function (){
   
 
  return false
-}
+})
 
 
-document.querySelector('#calcular-salarios').onclick = function(){
+document.querySelector('#calculador-salarios').addEventListener('submit', function(){
 
   const $salariosIntegrantes = document.querySelectorAll(' .integrante input')
   const salariosIntegrantes  = extraerNumeros($salariosIntegrantes)
 
-  if($salariosIntegrantes.className !== "error"){
-  document.querySelector('#mayor-salario').textContent = '$' + calcularMayorNumero(salariosIntegrantes)
-  document.querySelector('#menor-salario').textContent = '$' + calcularMenorNumero(salariosIntegrantes)
-  document.querySelector('#salario-anual-promedio').textContent = '$' + calcularPromedio(salariosIntegrantes)
-  document.querySelector('#salario-mensual-promedio').textContent = '$' + (calcularPromedio(salariosIntegrantes)/12)
+  if(document.querySelector('#calculador-salarios').className !=="hay-error"){
+    document.querySelector('#mayor-salario').textContent = '$' + calcularMayorNumero(salariosIntegrantes)
+    document.querySelector('#menor-salario').textContent = '$' + calcularMenorNumero(salariosIntegrantes)
+    document.querySelector('#salario-anual-promedio').textContent = '$' + calcularPromedio(salariosIntegrantes)
+    document.querySelector('#salario-mensual-promedio').textContent = '$' + (calcularPromedio(salariosIntegrantes)/12)
   
-  mostrarResultados()}
+    mostrarResultados()}
 
  return false
-}
+})
 
 document.querySelector('#resetear-inputs').onclick = resetear
 
@@ -81,7 +81,8 @@ function calcularMenorNumero (numeros){
         mostrarBotonCalcular()
         mostrarBotonResetear()
       }
-      else(resetear())
+      else{
+        resetear()}
 
       for(let i = 0; i < numero; i++){
           let $div = document.createElement('div')
@@ -91,7 +92,7 @@ function calcularMenorNumero (numeros){
           $label.textContent = 'Salario anual integrante # ' + (i + 1) + ' : $'
           let $input = document.createElement('input')
           $input.type= "number"
-          $input.className = "salario " + (i + 1)
+          $input.name ="salario-" + (i + 1)
 
           $div.appendChild($label)
           $div.appendChild($input)
